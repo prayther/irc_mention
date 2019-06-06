@@ -7,7 +7,8 @@ if [ -f ./log/irc_last.log ];then
 	touch ./log/irc_last.log
 fi
 
-grep -i $USER * | grep "$DATE" > ./log/irc_current.log
+rm -f ./log/irc_current.log
+grep -i $USER * | grep "$DATE" >> ./log/irc_current.log
 
 diff ./log/irc_current.log ./log/irc_last.log
 if [ $? == 0 ];then
@@ -23,6 +24,3 @@ Content-Type: text/plain
 $(cat ./log/irc_last.log)
 
 EOF
-
-#rm -f irc_current.log
-
