@@ -71,3 +71,9 @@ hello world
 EOF
 ```
 If you have want html in your email body then use 'text/html' above.
+
+## Add /etc/crontab entry
+Check every 5 minutes for a new mention that day
+```
+*/5 * * * * root /usr/bin/irc_mention.sh
+```
