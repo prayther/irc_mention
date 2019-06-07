@@ -77,3 +77,5 @@ Check every 5 minutes for a new mention that day
 ```
 */5 * * * * root /usr/bin/irc_mention.sh
 ```
+## Next version if this would probably include...
+* Just show new messages, not every message from that day including the new ones.
