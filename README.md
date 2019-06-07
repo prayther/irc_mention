@@ -51,6 +51,15 @@ systemctl enable sendmail
 
 systemctl restart sendmail
 ```
+## Modify irc_mention.sh
+account=local user name where home dir resides
+handle=your IRC handle
+email@address.org=email address you want the 'mentions' to go to
+```
+DIR=/home/<account>/.config/hexchat/logs/<server> #or wherever the logs are for your client
+IRC_USER=<handle>
+EMAIL=<email@address.org>
+```
 ## Test sending email with ‘sendmail’ command
 Now everything is done. Let’s try to send your first email to your ‘target-email@gmail.com’ with command:
 ```
