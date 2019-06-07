@@ -4,6 +4,7 @@ DIR=/home/<account>/.config/hexchat/logs/<server> #or wherever the logs are for 
 IRC_USER=<handle>
 EMAIL=<email@address.org>
 DATE=$(/usr/bin/date +"%b %d")
+NETWORK=<network>.log
 
 if [ ! -f /tmp/irc_current.log ];then
 	touch /tmp/irc_current.log
@@ -14,7 +15,7 @@ if [ ! -f /tmp/irc_last.log ];then
 fi
 
 # no '#' in front of private channels
-for Private_Channels in $(ls | grep -v \#);do
+for Private_Channels in $(ls | grep -v \# | grep -v ${NETWORK});do
         cat ${IRC_USER} ${DIR}/${Private_Channels} | grep "${DATE}" >> /tmp/irc_current.log
 done
 
@@ -35,6 +36,8 @@ From: $(hostname)@localhost.localdomain
 To: ${EMAIL}
 Subject: IRC mention
 Content-Type: text/plain
+X-Priority: 1 (Highest)
+X-MSMail-Priority: High
 
 $(cat /tmp/irc_last.log)
 
