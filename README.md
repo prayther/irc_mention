@@ -1,5 +1,8 @@
 # irc_mention
-irc_mention.sh is a cron script to grep irc mentions in log files and email them as el cheapo push notification.
+irc_mention.sh is a cron script to grep irc mentions in log files and email them as el cheapo push notification. If you lose connectivity to the IRC server you are out of luck and need to look at a proxy/bouncer type of thing.
+
+This requires that you have a machine dedicated to being connected to your IRC network and then just sends an email if it notices a 'mention'.
+
 I used this to setup IMAP SMTP relay on gmail https://medium.com/@yenthanh/config-your-sever-as-a-mta-mail-transfer-agent-using-sendmail-with-a-gmail-account-93bbf2eec6c1. Below is a synopsis of the URL.
 
 Setup a gmail filter (not just clicking on the email to say "Not Spam") to mark the incoming email to not be Spam. We are breaking every rule of email and gmail smartly demnands that it is Spam.
