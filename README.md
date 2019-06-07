@@ -1,7 +1,7 @@
 ## irc_mention
 
 Linux cron script to grep irc mentions in log files and email them as el cheapo push notification.
-I used this to setup IMAP smtp relay on gmail https://medium.com/@yenthanh/config-your-sever-as-a-mta-mail-transfer-agent-using-sendmail-with-a-gmail-account-93bbf2eec6c1.
+I used this to setup IMAP SMTP relay on gmail https://medium.com/@yenthanh/config-your-sever-as-a-mta-mail-transfer-agent-using-sendmail-with-a-gmail-account-93bbf2eec6c1.
 I also setup a gmail filter to mark my localhost.localdomain email to not be Spam.
 
 The gist of setting up gmail as a relay is (but the credit goes to Lê Yên Thanh
