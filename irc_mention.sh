@@ -1,7 +1,8 @@
 #!/bin/bash -x
 
-DIR=/home/<account>/.config/hexchat/logs/<server>
+DIR=/home/<account>/.config/hexchat/logs/<server> #or wherever the logs are for your client
 IRC_USER=<handle>
+EMAIL=<email@address.org>
 DATE=$(/usr/bin/date +"%b %d")
 
 if [ ! -f /tmp/irc_current.log ];then
@@ -23,7 +24,7 @@ mv /tmp/irc_current.log /tmp/irc_last.log
 
 /usr/sbin/sendmail -t <<EOF
 From: $(hostname)@localhost.localdomain
-To: <email>
+To: ${EMAIL}
 Subject: IRC mention
 Content-Type: text/plain
 
