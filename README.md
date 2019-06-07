@@ -5,7 +5,7 @@ This requires that you have a machine dedicated to being connected to your IRC n
 
 I used this to setup IMAP SMTP relay on gmail https://medium.com/@yenthanh/config-your-sever-as-a-mta-mail-transfer-agent-using-sendmail-with-a-gmail-account-93bbf2eec6c1. Below is a synopsis of the URL.
 
-Setup a gmail filter (not just clicking on the email to say "Not Spam") to mark the incoming email to not be Spam. Also you will need to have the filter 'forward' the email to domains that will do more aggressive Spam filtering than google and not even accept delivery to begin with. We are breaking every rule of email and gmail smartly demnands that it is Spam.
+Setup a gmail filter (not just clicking on the email to say "Not Spam") to mark the incoming email to not be Spam. Also you will need to have the filter 'forward' the email to domains that will do more aggressive Spam filtering than google and not even accept delivery to begin with. We are breaking every rule of email and have to work at getting Spam through the system.
 
 The gist of setting up gmail as a relay is (but the credit goes to Lê Yên Thanh
 Want to know more about me? https://lythanh.xyz):
