@@ -13,7 +13,15 @@ if [ ! -f /tmp/irc_last.log ];then
 	touch /tmp/irc_last.log
 fi
 
-grep --directories=skip -i ${IRC_USER} ${DIR}/* | grep "${DATE}" > /tmp/irc_current.log
+# no '#' in front of private channels
+for Private_Channels in $(ls | grep -v \#);do
+        cat ${IRC_USER} ${DIR}/${Private_Channels} | grep "${DATE}" >> /tmp/irc_current.log
+done
+
+# has '#' in normal auto connected channels
+for Channels in $(ls \#*);do
+        grep --directories=skip -i ${IRC_USER} ${DIR}/${Channels} | grep "${DATE}" >> /tmp/irc_current.log
+done
 
 diff /tmp/irc_current.log /tmp/irc_last.log
 if [ $? == 0 ];then
