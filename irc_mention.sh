@@ -1,9 +1,14 @@
 #!/bin/bash -x
 
+# redirect everything
+logfile=/var/log/irc_mention.log
+exec > $logfile 2>&1
+
 DIR=/home/<account>/.config/hexchat/logs/<server> #or wherever the logs are for your client
 IRC_USER=<handle>
 EMAIL=<email@address.org>
 DATE=$(/usr/bin/date +"%b %d")
+LogDate=$(/usr/bin/date +"%b %d %R") # this is to capture 30 seconds + from maillog. LogDateEnd is set below
 NETWORK=<network>.log
 
 if [ ! -f /tmp/irc_current.log ];then
@@ -14,14 +19,12 @@ if [ ! -f /tmp/irc_last.log ];then
 	touch /tmp/irc_last.log
 fi
 
-# no '#' in front of private channels
-for Private_Channels in $(ls | grep -v \# | grep -v ${NETWORK});do
-        cat ${IRC_USER} ${DIR}/${Private_Channels} | grep "${DATE}" >> /tmp/irc_current.log
+for Private_Channels in $(ls ${DIR}/ | grep -v \# | grep -v ${NETWORK} | grep -v server.log | grep -v rhat.log);do
+        cat ${DIR}/${Private_Channels}* | grep "${DATE}" >> /tmp/irc_current.log
 done
 
-# has '#' in normal auto connected channels
-for Channels in $(ls \#*);do
-        grep --directories=skip -i ${IRC_USER} ${DIR}/${Channels} | grep "${DATE}" >> /tmp/irc_current.log
+for Channels in $(ls ${DIR}/\#*);do
+        grep --directories=skip -i ${IRC_USER} ${Channels} | grep "${DATE}" >> /tmp/irc_current.log
 done
 
 diff /tmp/irc_current.log /tmp/irc_last.log
@@ -42,3 +45,7 @@ X-MSMail-Priority: High
 $(cat /tmp/irc_last.log)
 
 EOF
+
+LogDateEnd=$(/usr/bin/date +"%b %d %R" -d "+30 seconds")
+sleep 30
+sed -n "/${LogDate}/,/${LogDateEnd}/p" /var/log/maillog >> /var/log/irc_mention.log
