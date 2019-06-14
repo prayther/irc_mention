@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
 # redirect everything
-logfile=/var/log/irc_mention.log
+logfile=/tmp/irc_mention.log
 exec > $logfile 2>&1
 
 DIR=/home/<account>/.config/hexchat/logs/<server> #or wherever the logs are for your client
