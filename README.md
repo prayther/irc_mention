@@ -78,7 +78,7 @@ If you have want html in your email body then use 'text/html' above.
 ## Add /etc/crontab entry
 Check every 5 minutes, 9-5, Mon-Fri
 ```
-5 9-17 * * 1-5  root /usr/bin/irc_mention.sh
+*/5 8-16 * * 1-5  root /usr/local/bin/irc_mention.sh
 ```
 ## Next version if this would probably include...
 * Just show new messages, not every message from that day including the new ones.
